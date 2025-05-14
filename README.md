@@ -2,6 +2,19 @@
 
 Papyrus Ultimate Virtual Data Room
 
+## Getting Started
+```
+CREATE DATABASE papyrus   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'papyrus'@'%' IDENTIFIED BY 'papyrus01';
+GRANT ALL PRIVILEGES ON *.* TO 'papyrus'@'%';
+
+
+export DATABASE_URL=mysql://papyrus:papyrus01@localhost/papyrus
+export USE_DOCKER=0 
+
+```
+
+
 [![Built with Cookiecutter Django](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter)](https://github.com/cookiecutter/cookiecutter-django/)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
