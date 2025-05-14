@@ -274,5 +274,4 @@ papyrus/media/
 .pytest_cache/
 .ipython/
 .env
-.envs/*
 .vscode
