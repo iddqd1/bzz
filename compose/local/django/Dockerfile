@@ -10,6 +10,9 @@ ARG BUILD_ENVIRONMENT=local
 RUN apt-get update && apt-get install --no-install-recommends -y \
   # dependencies for building Python packages
   build-essential \
+  python3-pip \
+  python3-venv \
+  python3-wheel \
   python3-dev \
   pkg-config \
   # mysqlclient dependencies
