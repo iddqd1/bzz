@@ -57,7 +57,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   python3-dev \
   pkg-config \
   default-libmysqlclient-dev \
-
   wait-for-it \
   # Translations dependencies
   gettext \
