@@ -1,7 +1,0 @@
-# PostgreSQL
-# ------------------------------------------------------------------------------
-POSTGRES_HOST=mysql
-POSTGRES_PORT=5432
-POSTGRES_DB=papyrus
-POSTGRES_USER=VyNbDNzUPNCFjoXQoPZbtRUocqVoBTcG
-POSTGRES_PASSWORD=UWXKfZbiGvWkwD4AtYVhsGxW3Ycbs3IiaLTGZwN9gqQ0J73bYRMhC95UOXtDIUZP
