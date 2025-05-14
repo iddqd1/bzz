@@ -1,7 +1,0 @@
-# PostgreSQL
-# ------------------------------------------------------------------------------
-MYSQL_HOST=mysql
-MYSQL_PORT=3306
-MYSQL_DATBASE=papyrus
-MYSQL_USER=VyNbDNzUPNCFjoXQoPZbtRUocqVoBTcG
-MYSQL_PASSWORD=6UxNaHyp6vx88OtewsqI3Qs67PTTR1oZ3BNVjQTbMDckrZvof4Seeq9JODqSORVi

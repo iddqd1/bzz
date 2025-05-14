@@ -1,0 +1,8 @@
+# MYSQLQL
+# ------------------------------------------------------------------------------
+MYSQL_HOST=mysql
+MYSQL_PORT=3306
+MYSQL_DATABASE=papyrus
+MYSQL_USER=root
+MYSQL_PASSWORD=shdGFDlkkdjjdcsbnabcbahdcvadhcvdncvd
+MYSQL_ROOT_PASSWORD=shdGFDlkkdjjdcsbnabcbahdcvadhcvdncvd
