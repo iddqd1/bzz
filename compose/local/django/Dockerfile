@@ -54,6 +54,10 @@ RUN groupadd --gid 1000 dev-user \
 RUN apt-get update && apt-get install --no-install-recommends -y \
   # psycopg dependencies
   libpq-dev \
+  python3-dev \
+  pkg-config \
+  default-libmysqlclient-dev \
+
   wait-for-it \
   # Translations dependencies
   gettext \
