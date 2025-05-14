@@ -141,7 +141,10 @@ INSTALLED_APPS += ["anymail"]
 EMAIL_BACKEND = "anymail.backends.mandrill.EmailBackend"
 ANYMAIL = {
     "MANDRILL_API_KEY": env("MANDRILL_API_KEY"),
-    "MANDRILL_API_URL": env("MANDRILL_API_URL", default="https://mandrillapp.com/api/1.0"),
+    "MANDRILL_API_URL": env(
+        "MANDRILL_API_URL",
+        default="https://mandrillapp.com/api/1.0",
+    ),
 }
 
 # Collectfasta

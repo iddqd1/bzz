@@ -10,7 +10,7 @@ GRANT ALL PRIVILEGES ON *.* TO 'papyrus'@'%';
 
 
 export DATABASE_URL=mysql://papyrus:papyrus01@localhost/papyrus
-export USE_DOCKER=0 
+export USE_DOCKER=0
 
 ```
 
