@@ -10,8 +10,8 @@ ARG BUILD_ENVIRONMENT=local
 RUN apt-get update && apt-get install --no-install-recommends -y \
   # dependencies for building Python packages
   build-essential \
-  # psycopg dependencies
-  mysql-dev
+  # mysqlclient dependencies
+  libmysqlclient-dev
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements .
