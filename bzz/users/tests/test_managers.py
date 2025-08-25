@@ -1,8 +1,9 @@
 from io import StringIO
 
 import pytest
-from bzz.users.models import User
 from django.core.management import call_command
+
+from bzz.users.models import User
 
 
 @pytest.mark.django_db

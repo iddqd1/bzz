@@ -3,11 +3,12 @@ from http import HTTPStatus
 from importlib import reload
 
 import pytest
-from bzz.users.models import User
 from django.contrib import admin
 from django.contrib.auth.models import AnonymousUser
 from django.urls import reverse
 from pytest_django.asserts import assertRedirects
+
+from bzz.users.models import User
 
 
 class TestUserAdmin:

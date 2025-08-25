@@ -1,4 +1,5 @@
 import pytest
+
 from bzz.users.models import User
 from bzz.users.tests.factories import UserFactory
 

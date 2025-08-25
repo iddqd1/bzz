@@ -1,12 +1,6 @@
 from http import HTTPStatus
 
 import pytest
-from bzz.users.forms import UserAdminChangeForm
-from bzz.users.models import User
-from bzz.users.tests.factories import UserFactory
-from bzz.users.views import UserRedirectView
-from bzz.users.views import UserUpdateView
-from bzz.users.views import user_detail_view
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.models import AnonymousUser
@@ -17,6 +11,13 @@ from django.http import HttpResponseRedirect
 from django.test import RequestFactory
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+
+from bzz.users.forms import UserAdminChangeForm
+from bzz.users.models import User
+from bzz.users.tests.factories import UserFactory
+from bzz.users.views import UserRedirectView
+from bzz.users.views import UserUpdateView
+from bzz.users.views import user_detail_view
 
 pytestmark = pytest.mark.django_db
 

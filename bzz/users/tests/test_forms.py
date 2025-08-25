@@ -1,8 +1,9 @@
 """Module for all Form Tests."""
 
+from django.utils.translation import gettext_lazy as _
+
 from bzz.users.forms import UserAdminCreationForm
 from bzz.users.models import User
-from django.utils.translation import gettext_lazy as _
 
 
 class TestUserAdminCreationForm:
