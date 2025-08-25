@@ -1,3 +1,4 @@
+from bzz.users.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import QuerySet
@@ -6,8 +7,6 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView
 from django.views.generic import RedirectView
 from django.views.generic import UpdateView
-
-from papyrus.users.models import User
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):

@@ -28,9 +28,9 @@ django.setup()
 
 # -- Project information -----------------------------------------------------
 
-project = "Papyrus VDR"
-copyright = """2025, developers at stepinvest.com"""  # noqa: A001
-author = "developers at stepinvest.com"
+project = "Bzz VDR"
+copyright = """2025, developers at tdwizard.com"""  # noqa: A001
+author = "developers at tdwizard.com"
 
 
 # -- General configuration ---------------------------------------------------

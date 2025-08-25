@@ -1,7 +1,6 @@
+from bzz.users.models import User
 from django.urls import resolve
 from django.urls import reverse
-
-from papyrus.users.models import User
 
 
 def test_detail(user: User):

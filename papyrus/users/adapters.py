@@ -8,9 +8,8 @@ from django.conf import settings
 
 if typing.TYPE_CHECKING:
     from allauth.socialaccount.models import SocialLogin
+    from bzz.users.models import User
     from django.http import HttpRequest
-
-    from papyrus.users.models import User
 
 
 class AccountAdapter(DefaultAccountAdapter):

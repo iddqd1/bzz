@@ -23,8 +23,8 @@ def update_site_forward(apps, schema_editor):
     _update_or_create_site_with_sequence(
         Site,
         schema_editor.connection,
-        "vdr.stepinvest.com",
-        "Papyrus VDR",
+        "vdr.tdwizard.com",
+        "Bzz VDR",
     )
 
 

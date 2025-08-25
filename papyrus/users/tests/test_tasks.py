@@ -1,8 +1,7 @@
 import pytest
+from bzz.users.tasks import get_users_count
+from bzz.users.tests.factories import UserFactory
 from celery.result import EagerResult
-
-from papyrus.users.tasks import get_users_count
-from papyrus.users.tests.factories import UserFactory
 
 pytestmark = pytest.mark.django_db
 

@@ -1,15 +1,15 @@
-# Papyrus VDR
+# Bzz VDR
 
-Papyrus Ultimate Virtual Data Room
+Bzz Ultimate Virtual Data Room
 
 ## Getting Started
 ```
-CREATE DATABASE papyrus   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'papyrus'@'%' IDENTIFIED BY 'papyrus01';
-GRANT ALL PRIVILEGES ON *.* TO 'papyrus'@'%';
+CREATE DATABASE bzz   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'bzz'@'%' IDENTIFIED BY 'bzz01';
+GRANT ALL PRIVILEGES ON *.* TO 'bzz'@'%';
 
 
-export DATABASE_URL=mysql://papyrus:papyrus01@localhost/papyrus
+export DATABASE_URL=mysql://bzz:bzz01@localhost/bzz
 export USE_DOCKER=0
 
 ```
@@ -38,7 +38,7 @@ For convenience, you can keep your normal user logged in on Chrome and your supe
 
 Running type checks with mypy:
 
-    $ mypy papyrus
+    $ mypy bzz
 
 ### Test coverage
 
@@ -63,7 +63,7 @@ This app comes with Celery.
 To run a celery worker:
 
 ```bash
-cd papyrus
+cd bzz
 celery -A config.celery_app worker -l info
 ```
 
@@ -72,14 +72,14 @@ Please note: For Celery's import magic to work, it is important _where_ the cele
 To run [periodic tasks](https://docs.celeryq.dev/en/stable/userguide/periodic-tasks.html), you'll need to start the celery beat scheduler service. You can start it as a standalone process:
 
 ```bash
-cd papyrus
+cd bzz
 celery -A config.celery_app beat
 ```
 
 or you can embed the beat service inside a worker with the `-B` option (not recommended for production use):
 
 ```bash
-cd papyrus
+cd bzz
 celery -A config.celery_app worker -B -l info
 ```
 

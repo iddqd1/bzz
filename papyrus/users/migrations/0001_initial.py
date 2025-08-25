@@ -4,7 +4,7 @@ import django.utils.timezone
 from django.db import migrations
 from django.db import models
 
-import papyrus.users.models
+import bzz.users.models
 
 
 class Migration(migrations.Migration):
@@ -106,7 +106,7 @@ class Migration(migrations.Migration):
                 "abstract": False,
             },
             managers=[
-                ("objects", papyrus.users.models.UserManager()),
+                ("objects", bzz.users.models.UserManager()),
             ],
         ),
     ]

@@ -1,6 +1,6 @@
-# Translations for the Papyrus VDR project
-# Copyright (C) 2025 developers at stepinvest.com
-# developers at stepinvest.com <developers@stepinvest.com>, 2025.
+# Translations for the Bzz Mangle project
+# Copyright (C) 2025 developers at tdwizard.com
+# developers at tdwizard.com <developers@tdwizard.com>, 2025.
 #
 #, fuzzy
 msgid ""

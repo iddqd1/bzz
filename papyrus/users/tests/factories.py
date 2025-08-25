@@ -1,11 +1,10 @@
 from collections.abc import Sequence
 from typing import Any
 
+from bzz.users.models import User
 from factory import Faker
 from factory import post_generation
 from factory.django import DjangoModelFactory
-
-from papyrus.users.models import User
 
 
 class UserFactory(DjangoModelFactory[User]):

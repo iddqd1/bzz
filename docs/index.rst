@@ -1,9 +1,9 @@
-.. Papyrus VDR documentation master file, created by
+.. Bzz VDR documentation master file, created by
    sphinx-quickstart.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Papyrus VDR's documentation!
+Welcome to Bzz VDR's documentation!
 ======================================================================
 
 .. toctree::

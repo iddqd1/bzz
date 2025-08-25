@@ -13,7 +13,7 @@ services:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
 
-    image: papyrus_production_django
+    image: bzz_production_django
     depends_on:
       - mysql
       - redis
@@ -26,7 +26,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/mysql/Dockerfile
-    image: papyrus_production_mysql
+    image: bzz_production_mysql
     volumes:
       - production_mysql_data:/var/lib/mysqlql/data
       - production_mysql_data_backups:/backups
@@ -37,7 +37,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/traefik/Dockerfile
-    image: papyrus_production_traefik
+    image: bzz_production_traefik
     depends_on:
       - django
     volumes:
@@ -56,17 +56,17 @@ services:
 
   celeryworker:
     <<: *django
-    image: papyrus_production_celeryworker
+    image: bzz_production_celeryworker
     command: /start-celeryworker
 
   celerybeat:
     <<: *django
-    image: papyrus_production_celerybeat
+    image: bzz_production_celerybeat
     command: /start-celerybeat
 
   flower:
     <<: *django
-    image: papyrus_production_flower
+    image: bzz_production_flower
     command: /start-flower
 
   awscli:

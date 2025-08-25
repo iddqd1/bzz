@@ -269,7 +269,7 @@ tags
 dump.rdb
 
 ### Project template
-papyrus/media/
+bzz/media/
 
 .pytest_cache/
 .ipython/

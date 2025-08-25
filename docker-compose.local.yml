@@ -1,15 +1,15 @@
 volumes:
-  papyrus_local_mysql_data: {}
-  papyrus_local_mysql_data_backups: {}
-  papyrus_local_redis_data: {}
+  bzz_local_mysql_data: {}
+  bzz_local_mysql_data_backups: {}
+  bzz_local_redis_data: {}
 
 services:
   django: &django
     build:
       context: .
       dockerfile: ./compose/local/django/Dockerfile
-    image: papyrus_local_django
-    container_name: papyrus_local_django
+    image: bzz_local_django
+    container_name: bzz_local_django
     depends_on:
       - mysql
       - redis
@@ -26,26 +26,26 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/mysql/Dockerfile
-    image: papyrus_production_mysql
-    container_name: papyrus_local_mysql
+    image: bzz_production_mysql
+    container_name: bzz_local_mysql
     volumes:
-      - papyrus_local_mysql_data:/var/lib/mysqlql/data
-      - papyrus_local_mysql_data_backups:/backups
+      - bzz_local_mysql_data:/var/lib/mysqlql/data
+      - bzz_local_mysql_data_backups:/backups
     env_file:
       - ./.envs/.local/.mysql
 
   redis:
     image: docker.io/redis:6
-    container_name: papyrus_local_redis
+    container_name: bzz_local_redis
 
     volumes:
-      - papyrus_local_redis_data:/data
+      - bzz_local_redis_data:/data
 
 
   celeryworker:
     <<: *django
-    image: papyrus_local_celeryworker
-    container_name: papyrus_local_celeryworker
+    image: bzz_local_celeryworker
+    container_name: bzz_local_celeryworker
     depends_on:
       - redis
       - mysql
@@ -54,8 +54,8 @@ services:
 
   celerybeat:
     <<: *django
-    image: papyrus_local_celerybeat
-    container_name: papyrus_local_celerybeat
+    image: bzz_local_celerybeat
+    container_name: bzz_local_celerybeat
     depends_on:
       - redis
       - mysql
@@ -64,8 +64,8 @@ services:
 
   flower:
     <<: *django
-    image: papyrus_local_flower
-    container_name: papyrus_local_flower
+    image: bzz_local_flower
+    container_name: bzz_local_flower
     ports:
       - '5555:5555'
     command: /start-flower

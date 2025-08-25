@@ -1,8 +1,7 @@
 import pytest
+from bzz.users.api.views import UserViewSet
+from bzz.users.models import User
 from rest_framework.test import APIRequestFactory
-
-from papyrus.users.api.views import UserViewSet
-from papyrus.users.models import User
 
 
 class TestUserViewSet:

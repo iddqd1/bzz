@@ -4,7 +4,7 @@
 DJANGO_SETTINGS_MODULE=config.settings.production
 DJANGO_SECRET_KEY=elM5hjvymceYI2IBjAu11TFfMd7YdmJUZ4eKiIHMD0apxz9jbvSNEwaQUmvEcYcw
 DJANGO_ADMIN_URL=t3KlfsA1bHG8oiKbiHs6zIYrmkrxMiIV/
-DJANGO_ALLOWED_HOSTS=.vdr.stepinvest.com
+DJANGO_ALLOWED_HOSTS=.vdr.tdwizard.com
 
 # Security
 # ------------------------------------------------------------------------------

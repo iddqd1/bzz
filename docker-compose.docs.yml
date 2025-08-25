@@ -1,7 +1,7 @@
 services:
   docs:
-    image: papyrus_local_docs
-    container_name: papyrus_local_docs
+    image: bzz_local_docs
+    container_name: bzz_local_docs
     build:
       context: .
       dockerfile: ./compose/local/docs/Dockerfile
@@ -10,7 +10,7 @@ services:
     volumes:
       - ./docs:/docs:z
       - ./config:/app/config:z
-      - ./papyrus:/app/papyrus:z
+      - ./bzz:/app/bzz:z
     ports:
       - '9000:9000'
     command: /start-docs
