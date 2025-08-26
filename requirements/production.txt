@@ -4,9 +4,9 @@
 
 gunicorn==23.0.0  # https://github.com/benoitc/gunicorn
 # mysqlclient==2.2.5  # https://github.com/PyMySQL/mysqlclient
-Collectfasta==3.2.1  # https://github.com/jasongi/collectfasta
+Collectfasta==3.3.1  # https://github.com/jasongi/collectfasta
 
 # Django
 # ------------------------------------------------------------------------------
 django-storages[s3]==1.14.6  # https://github.com/jschneier/django-storages
-django-anymail[mandrill]==13.0  # https://github.com/anymail/django-anymail
+django-anymail[mandrill]==13.0.1  # https://github.com/anymail/django-anymail
