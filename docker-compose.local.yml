@@ -1,0 +1,71 @@
+volumes:
+  bzz_local_mysql_data: {}
+  bzz_local_mysql_data_backups: {}
+  bzz_local_redis_data: {}
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: bzz_local_django
+    container_name: bzz_local_django
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - .:/app:z
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.mysql
+    ports:
+      - '8000:8000'
+    command: /start
+
+  mysql:
+    build:
+      context: .
+      dockerfile: ./compose/production/mysql/Dockerfile
+    image: bzz_production_mysql
+    container_name: bzz_local_mysql
+    volumes:
+      - bzz_local_mysql_data:/var/lib/mysqlql/data
+      - bzz_local_mysql_data_backups:/backups
+    env_file:
+      - ./.envs/.local/.mysql
+
+  redis:
+    image: docker.io/redis:6
+    container_name: bzz_local_redis
+
+    volumes:
+      - bzz_local_redis_data:/data
+
+
+  celeryworker:
+    <<: *django
+    image: bzz_local_celeryworker
+    container_name: bzz_local_celeryworker
+    depends_on:
+      - redis
+      - mysql
+    ports: []
+    command: /start-celeryworker
+
+  celerybeat:
+    <<: *django
+    image: bzz_local_celerybeat
+    container_name: bzz_local_celerybeat
+    depends_on:
+      - redis
+      - mysql
+    ports: []
+    command: /start-celerybeat
+
+  flower:
+    <<: *django
+    image: bzz_local_flower
+    container_name: bzz_local_flower
+    ports:
+      - '5555:5555'
+    command: /start-flower
