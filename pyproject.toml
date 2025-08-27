@@ -53,6 +53,10 @@ indent_size = 2
 [tool.djlint.js]
 indent_size = 2
 
+[pycodestyle]
+# E501 reports lines that exceed the length of 100.
+max-line-length = 119
+
 [tool.ruff]
 target-version = "py312"
 # Exclude a variety of commonly ignored directories.
@@ -60,6 +64,11 @@ extend-exclude = [
     "*/migrations/*.py",
     "staticfiles/*",
 ]
+line-length = 120
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 119
+
 
 [tool.ruff.lint]
 select = [
