@@ -111,7 +111,7 @@ class YieldData(TimeStampedModel):
         max_length=20,
         choices=constants.YieldIntervalChoices.choices,
     )
-    
+
     class Meta:
         verbose_name_plural = "Yield data"
 
@@ -131,9 +131,8 @@ class LastYieldData(TimeStampedModel):
     class Meta:
         verbose_name_plural = "Last yield data"
         constraints = [
-            models.UniqueConstraint(fields=["instrument", "yield_interval"], name="unique_last_yield_data")
+            models.UniqueConstraint(fields=["instrument", "yield_interval"], name="unique_last_yield_data"),
         ]
-
 
     def __str__(self):
         return f"{self.instrument} Last Yield at {self.yield_at}: {self.yield_value}"

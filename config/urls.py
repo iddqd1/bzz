@@ -9,7 +9,6 @@ from drf_spectacular.views import SpectacularAPIView
 from drf_spectacular.views import SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 
-
 admin.site.site_header = "bzz administration"
 admin.site.site_title = "bzz admin"
 admin.site.index_title = "Bzz Admin"

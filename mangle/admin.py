@@ -32,4 +32,3 @@ class LastYieldDataAdmin(admin.ModelAdmin):
     list_display = ["id", "instrument", "yield_interval", "yield_at", "yield_value"]
     raw_id_fields = ["instrument"]
     readonly_fields = ["created"]
-    
