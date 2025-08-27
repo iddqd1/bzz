@@ -1,0 +1,9 @@
+# MYSQLQL
+# not used in production really just for testing docker-compose
+# ------------------------------------------------------------------------------
+MYSQL_HOST=mysql
+MYSQL_PORT=3306
+MYSQL_DATABASE=bzz_production
+MYSQL_USER=bzz_production
+MYSQL_PASSWORD=shdGFDlkkdjjdcsbnabcbahdcvadhcvdncvd
+MYSQL_ROOT_PASSWORD=shdGFDlkkdjjdcsbnabcbahdcvadhcvdncvd
