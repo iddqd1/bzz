@@ -10,7 +10,7 @@ class Instrument(TimeStampedModel):
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=100, unique=True)
     isin = models.CharField(max_length=12, db_index=True, blank=True, default="")
-    bloomberg_code = models.CharField(max_length=20)
+    bloomberg_code = models.CharField(max_length=20, blank=True, default="")
     description = models.TextField(blank=True, default="")
 
     def __str__(self):
@@ -19,16 +19,17 @@ class Instrument(TimeStampedModel):
 
 class InstrumentConfiguration(TimeStampedModel):
     instrument = models.OneToOneField(Instrument, on_delete=models.CASCADE)
-    configuration = models.JSONField(blank=True, default=dict)
     price_synchronization_interval = CharFieldWithoutChoicesMigrations(
         max_length=20,
         choices=constants.IntervalChoices.choices,
-        default=constants.IntervalChoices.DAILY,
+        default="",
+        blank=True,
     )
     stock_exchange = CharFieldWithoutChoicesMigrations(
         max_length=20,
         default="",
         choices=constants.StockExchangeChoices.choices,
+        blank=True,
     )
 
     timezone = CharFieldWithoutChoicesMigrations(
@@ -46,6 +47,7 @@ class InstrumentConfiguration(TimeStampedModel):
         max_length=20,
         choices=constants.IntervalChoices.choices,
         default="",
+        blank=True,
     )
     yield_delay_threshold = CharFieldWithoutChoicesMigrations(
         max_length=20,
@@ -57,6 +59,7 @@ class InstrumentConfiguration(TimeStampedModel):
         max_length=20,
         choices=constants.ReportSourceChoices.choices,
         default="",
+        blank=True,
     )
     basic_metrics_source = CharFieldWithoutChoicesMigrations(
         max_length=20,
@@ -72,7 +75,7 @@ class InstrumentConfiguration(TimeStampedModel):
 class PriceData(TimeStampedModel):
     instrument = models.ForeignKey(Instrument, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=15, decimal_places=10)
-    price_at = models.DateTimeField()
+    price_at = models.DateTimeField(db_index=True)
 
     def __str__(self):
         return f"{self.instrument} Price at {self.price_at}: {self.price}"
@@ -89,7 +92,7 @@ class LatestPriceData(TimeStampedModel):
 
 class YieldReport(TimeStampedModel):
     instrument = models.ForeignKey(Instrument, on_delete=models.CASCADE)
-    report_at = models.DateTimeField()
+    report_at = models.DateTimeField(db_index=True)
 
     def __str__(self):
         return f"{self.instrument} Yield Report for {self.report_at}"
@@ -103,11 +106,34 @@ class YieldData(TimeStampedModel):
         db_comment="Duplication for speed",
     )
     yield_value = models.DecimalField(max_digits=10, decimal_places=5)
+    yield_at = models.DateTimeField(db_index=True)
+    yield_interval = CharFieldWithoutChoicesMigrations(
+        max_length=20,
+        choices=constants.YieldIntervalChoices.choices,
+    )
+    
+    class Meta:
+        verbose_name_plural = "Yield data"
+
+    def __str__(self):
+        return f"{self.instrument} Yield at {self.yield_at}: {self.yield_value}"
+
+
+class LastYieldData(TimeStampedModel):
+    instrument = models.OneToOneField(Instrument, on_delete=models.CASCADE)
+    yield_value = models.DecimalField(max_digits=10, decimal_places=5)
     yield_at = models.DateTimeField()
-    yield_interval = models.CharField(
+    yield_interval = CharFieldWithoutChoicesMigrations(
         max_length=20,
         choices=constants.YieldIntervalChoices.choices,
     )
 
+    class Meta:
+        verbose_name_plural = "Last yield data"
+        constraints = [
+            models.UniqueConstraint(fields=["instrument", "yield_interval"], name="unique_last_yield_data")
+        ]
+
+
     def __str__(self):
-        return f"{self.instrument} Yield at {self.yield_at}: {self.yield_value}"
+        return f"{self.instrument} Last Yield at {self.yield_at}: {self.yield_value}"
