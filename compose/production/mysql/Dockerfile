@@ -1,4 +1,4 @@
-FROM docker.io/mysql:8.0
+FROM docker.io/mysql:9.4
 
 COPY ./compose/production/postgres/maintenance /usr/local/bin/maintenance
 RUN chmod +x /usr/local/bin/maintenance/*
