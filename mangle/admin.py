@@ -13,6 +13,7 @@ class InstrumentAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "code", "isin", "bloomberg_code")
     search_fields = ("name", "code", "isin", "bloomberg_code")
     inlines = [InstrumentConfigurationInline]
+    list_filter = ("instrument_type",)
 
 
 @admin.register(models.YieldReport)
@@ -22,7 +23,7 @@ class YieldReportAdmin(admin.ModelAdmin):
 
 @admin.register(models.YieldData)
 class YieldDataAdmin(admin.ModelAdmin):
-    list_display = ["id", "instrument", "yield_interval", "yield_value", "yield_at"]
+    list_display = ["id", "instrument", "yield_interval", "yield_value", "report"]
     raw_id_fields = ["instrument", "report"]
     readonly_fields = ["created"]
 

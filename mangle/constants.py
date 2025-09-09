@@ -1,7 +1,15 @@
 from django.db import models
 
 
+class InstrumentTypeChoices(models.TextChoices):
+    STOCK = "stock", "Stock"
+    ETF = "etf", "ETF"
+    MUTUAL_FUND = "mutual_fund", "Mutual Fund"
+    BOND = "bond", "Bond"
+
+
 class IntervalChoices(models.TextChoices):
+    LIVE = "live", "Live"
     MINUTE = "minute", "Minute"
     HOURLY = "hourly", "Hourly"
     DAILY = "daily", "Daily"
