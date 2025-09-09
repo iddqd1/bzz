@@ -145,4 +145,4 @@ class ReportData(TimeStampedModel):
     value_text = models.TextField(default="", blank=True)
 
     def __str__(self):
-        return f"{self.report} Data {self.key}: {self.value_number or self.value_text}"
+        return f"{self.report} Data {self.key_value}: {self.value_number or self.value_text}"
