@@ -131,7 +131,7 @@ class LatestReport(TimeStampedModel):
             models.UniqueConstraint(
                 fields=["instrument", "report_type"],
                 name="unique_instrument_report_type",
-            )
+            ),
         ]
 
     def __str__(self):
