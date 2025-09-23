@@ -6,6 +6,10 @@ class InstrumentTypeChoices(models.TextChoices):
     ETF = "etf", "ETF"
     MUTUAL_FUND = "mutual_fund", "Mutual Fund"
     BOND = "bond", "Bond"
+    MMF = "mmf", "Money Market Fund"
+    INDEX = "index", "Index"
+    COMMODITY = "commodity", "Commodity"
+    CRYPTOCURRENCY = "cryptocurrency", "Cryptocurrency"
 
 
 class IntervalChoices(models.TextChoices):
@@ -43,6 +47,8 @@ class TimeZoneChoices(models.TextChoices):
 
 
 class StockExchangeChoices(models.TextChoices):
+    PRIVATE = "PRIVATE", "Private Company"
+    NOT_PUBLIC = "NOT_PUBLIC", "Not Publicly Traded"
     NYSE = "NYSE", "NEW YORK STOCK EXCHANGE"
     NASDAQ = "NASDAQ", "NASDAQ"
     GPW = "GPW", "WARSAW STOCK EXCHANGE"
@@ -72,3 +78,18 @@ class ReportSourceChoices(models.TextChoices):
     IEX = "iex", "IEX"
     YAHOO_FINANCE = "yahoo_finance", "Yahoo Finance"
     EMAIL = "email", "Email"
+    SCRAPER = "scraper", "Scraper"
+    MANUAL = "manual", "Manual"
+
+
+class ReportTypeChoices(models.TextChoices):
+    PRICE = "price", "Price"
+    GENERIC = "generic", "Generic"
+    COMBINED = "combined", "Combined"
+    EARNINGS = "earnings", "Earnings"
+    DIVIDEND = "dividend", "Dividend"
+    SPLIT = "split", "Split"
+    MERGER = "merger", "Merger"
+    ACQUISITION = "acquisition", "Acquisition"
+    IPO = "ipo", "IPO"
+    OTHER = "other", "Other"

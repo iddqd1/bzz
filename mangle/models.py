@@ -1,9 +1,8 @@
 from django.db import models
 from model_utils.models import TimeStampedModel
 
+from common import constants
 from common.model_fields import CharFieldWithoutChoicesMigrations
-
-from . import constants
 
 
 class Instrument(TimeStampedModel):
@@ -21,61 +20,6 @@ class Instrument(TimeStampedModel):
 
     def __str__(self):
         return f"#{self.pk} {self.code}"
-
-
-class InstrumentConfiguration(TimeStampedModel):
-    instrument = models.OneToOneField(Instrument, on_delete=models.CASCADE)
-    price_synchronization_interval = CharFieldWithoutChoicesMigrations(
-        max_length=20,
-        choices=constants.IntervalChoices.choices,
-        default="",
-        blank=True,
-    )
-    stock_exchange = CharFieldWithoutChoicesMigrations(
-        max_length=20,
-        default="",
-        choices=constants.StockExchangeChoices.choices,
-        blank=True,
-    )
-
-    timezone = CharFieldWithoutChoicesMigrations(
-        max_length=50,
-        choices=constants.TimeZoneChoices.choices,
-        default=constants.TimeZoneChoices.AMERICA_NEW_YORK,
-    )
-    price_delay_threshold = CharFieldWithoutChoicesMigrations(
-        max_length=20,
-        choices=constants.IntervalChoices.choices,
-        blank=True,
-        default="",
-    )
-    yield_synchronization_interval = CharFieldWithoutChoicesMigrations(
-        max_length=20,
-        choices=constants.IntervalChoices.choices,
-        default="",
-        blank=True,
-    )
-    yield_delay_threshold = CharFieldWithoutChoicesMigrations(
-        max_length=20,
-        choices=constants.IntervalChoices.choices,
-        blank=True,
-        default="",
-    )
-    price_source = CharFieldWithoutChoicesMigrations(
-        max_length=20,
-        choices=constants.ReportSourceChoices.choices,
-        default="",
-        blank=True,
-    )
-    basic_metrics_source = CharFieldWithoutChoicesMigrations(
-        max_length=20,
-        blank=True,
-        choices=constants.ReportSourceChoices.choices,
-        default="",
-    )
-
-    def __str__(self):
-        return f"{self.instrument} Configuration"
 
 
 class PriceData(TimeStampedModel):
