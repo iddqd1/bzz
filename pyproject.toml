@@ -55,7 +55,7 @@ indent_size = 2
 
 [pycodestyle]
 # E501 reports lines that exceed the length of 100.
-max-line-length = 119
+max-line-length = 120
 
 [tool.ruff]
 target-version = "py312"

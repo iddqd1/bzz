@@ -60,6 +60,17 @@ class InstrumentConfiguration(TimeStampedModel):
         return f"{self.instrument} Configuration"
 
 
+class ScraperType(TimeStampedModel):
+    id = CharFieldWithoutChoicesMigrations(
+        max_length=20,
+        choices=constants.ReportTypeChoices.choices,
+        primary_key=True,
+    )
+
+    def __str__(self):
+        return f"{self.pk} scraper type"
+
+
 class WebPageScraperConfiguration(TimeStampedModel):
     instrument_configuration = models.ForeignKey(
         InstrumentConfiguration,
@@ -73,6 +84,7 @@ class WebPageScraperConfiguration(TimeStampedModel):
         default="",
         help_text="Custom query to extract data from the webpage.",
     )
+    scraper_types = models.ManyToManyField(ScraperType)
     active = models.BooleanField(default=True)
     version = models.IntegerField(default=1)
 
@@ -84,6 +96,7 @@ class ScrapedData(TimeStampedModel):
     instrument_configuration = models.ForeignKey(
         InstrumentConfiguration,
         on_delete=models.CASCADE,
+        db_comment="The instrument configuration associated with the scraped data.",
     )
     source = CharFieldWithoutChoicesMigrations(
         max_length=20,
@@ -91,6 +104,7 @@ class ScrapedData(TimeStampedModel):
         default="",
         blank=True,
     )
+    scraper_type = models.ForeignKey(ScraperType, on_delete=models.CASCADE)
     data = models.JSONField(help_text="The scraped data in JSON format.", db_comment="Scraped data in JSON format")
     raw_data = models.TextField(blank=True, default="", db_comment="Raw scraped data as text. Optional")
 

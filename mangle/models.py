@@ -43,29 +43,30 @@ class LatestPriceData(TimeStampedModel):
         return f"{self.instrument} Latest Price at {self.price_at}: {self.price}"
 
 
-class Report(TimeStampedModel):
-    instrument = models.ForeignKey(Instrument, on_delete=models.CASCADE)
-    report_type = CharFieldWithoutChoicesMigrations(
+class ReportType(TimeStampedModel):
+    id = CharFieldWithoutChoicesMigrations(
         max_length=20,
         choices=constants.ReportTypeChoices.choices,
-        default="",
-        blank=True,
+        primary_key=True,
     )
+
+    def __str__(self):
+        return f"{self.pk} Report Type"
+
+
+class Report(TimeStampedModel):
+    instrument = models.ForeignKey(Instrument, on_delete=models.CASCADE)
+    report_type = models.ManyToManyField(ReportType)
     report_at = models.DateTimeField(db_index=True)
     published_at = models.DateTimeField(db_index=True)
 
     def __str__(self):
-        return f"{self.instrument} Report {self.report_type} at {self.published_at}"
+        return f"#{self.pk} {self.instrument} Report {self.report_type}"
 
 
 class LatestReport(TimeStampedModel):
     instrument = models.ForeignKey(Instrument, on_delete=models.CASCADE)
-    report_type = CharFieldWithoutChoicesMigrations(
-        max_length=20,
-        choices=constants.ReportTypeChoices.choices,
-        default="",
-        blank=True,
-    )
+    report_type = models.ForeignKey(ReportType, on_delete=models.CASCADE)
     report = models.OneToOneField(Report, on_delete=models.CASCADE)
     report_at = models.DateTimeField()
     published_at = models.DateTimeField()

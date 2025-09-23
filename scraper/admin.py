@@ -24,16 +24,22 @@ class InstrumentConfigurationAdmin(admin.ModelAdmin):
 
 @admin.register(models.WebPageScraperConfiguration)
 class WebPageScraperConfigurationAdmin(admin.ModelAdmin):
-    list_display = ("id", "url", "is_active", "last_scraped_at", "active")
-    search_fields = ("url",)
+    list_display = ("id", "url", "is_active", "created", "active")
+    search_fields = ("url", "instrument_configuration__instrument__name", "instrument_configuration__instrument__code")
     list_filter = ("is_active", "active")
-    ordering = ("-last_scraped_at",)
+    ordering = ("-id",)
     autocomplete_fields = ("instrument_configuration",)
+
+
+@admin.register(models.ScraperType)
+class ScraperTypeAdmin(admin.ModelAdmin):
+    list_display = ("id", "created")
+    search_fields = ("id",)
+    ordering = ("-created",)
 
 
 @admin.register(models.ScrapedData)
 class ScrapedDataAdmin(admin.ModelAdmin):
-    list_display = ("id", "instrument", "data_type", "data_value", "scraped_at")
-    search_fields = ("instrument__name", "instrument__code", "data_type")
-    list_filter = ("data_type",)
-    ordering = ("-scraped_at",)
+    list_display = ("id", "instrument_configuration", "scraper_type", "created", "source")
+    list_filter = ("scraper_type",)
+    ordering = ("-created",)
