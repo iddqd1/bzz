@@ -47,7 +47,7 @@ def crawl_webpage():
 
         return {"test": "value"}
 
-    get_webpage_crawlers >> extract()
+    get_webpage_crawlers >> extract()  # pyright: ignore[reportUnusedExpression]
 
 
 crawl_webpage()
