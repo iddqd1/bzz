@@ -11,11 +11,11 @@ from airflow.sdk import AssetAlias
 from airflow.sdk import Metadata
 from airflow.sdk import task
 
-_get_proxy_settings()
-
 os.environ["NO_PROXY"] = "*"
 
 logger = logging.getLogger(__name__)
+
+_get_proxy_settings()
 
 
 asset_page_price = "asset-page-price"
