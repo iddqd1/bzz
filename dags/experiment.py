@@ -1,6 +1,5 @@
 import logging
 import os
-from _scproxy import _get_proxy_settings
 
 import pendulum
 import requests
@@ -14,9 +13,6 @@ from airflow.sdk import task
 os.environ["NO_PROXY"] = "*"
 
 logger = logging.getLogger(__name__)
-
-_get_proxy_settings()
-
 
 asset_page_price = "asset-page-price"
 asset_page_holdings = "asset-page-holdings"
