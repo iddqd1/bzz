@@ -13,7 +13,7 @@ class BaseGeminiAnalyzer(ABC):
     def generate_content(self, text: str, schema: str) -> str | None:
         data = text + schema
         response = self.client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.0-flash-lite",  # gemini-2.0-flash-lite  gemini-2.0-flash
             config={"response_mime_type": "application/json"},
             contents=data,
         )
@@ -40,7 +40,7 @@ class HoldingsGeminiAnalyzer(BaseGeminiAnalyzer):
         {
         "name": str,
         "percentage": float,
-        "position": float,
+        "position": int,
         }]"""
 
 
