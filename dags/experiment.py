@@ -170,6 +170,14 @@ def load_data_to_mangle():
         max_active_tis_per_dagrun=3,
         sql="sql/select_scraped_data.sql",
     )
+    """
+       approved_at: 2025-09-30 20:17:11.000000
+       data: {"date": "2025-08-31", "price": 1.34181978}
+       report_type_id: price
+       created: 2025-09-30 20:17:11.000000
+       code: SGXZ99103178
+       instrument_id: 4
+    """
 
     @task
     def extract_data(row):
